@@ -1,7 +1,7 @@
 -- all the data for your comic goes into this table
 -- you can split it up into multiple files to make it easier to manage 
 
-myComicData = { -- a list of SEQUENCES for this comic
+comicData = { -- a list of SEQUENCES for this comic
 
 	{ -- Sequence 1
 		title = "Chapter 1",
