@@ -16,9 +16,9 @@ s01 = {
 			-- light switch
 			layers = {
 				{ images = { "s01/B-1a-roomDark.png", "s01/B-1b-roomLit.png" } , parallax = 1 },
-				{ image = "s01/B-2-wall.png", parallax = 0.9 },
+				{ image = "s01/B-2-wall.png", parallax = 0.8 },
 				{ images = { "s01/B-3a-switchOff.png", "s01/B-3b-switchOn.png" }, parallax = 0.8 },
-				{ image = "s01/B-4-hand.png", parallax = 0.7 },
+				{ image = "s01/B-4-hand.png", parallax = 0.7, y = 50, x = -30, animate={y = -10, x = 10} },
 			},
 		},
 		{

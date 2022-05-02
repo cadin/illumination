@@ -17,9 +17,17 @@ import "comicData.lua"
 
 -- SETTINGS:
 -- change any settings before calling `start()`
-Panels.Settings.showMenuOnLaunch = false
+-- Panels.Settings.showMenuOnLaunch = false
+-- Panels.Settings.listUnnamedSequences = true
+Panels.Settings.chapterMenuHeaderImage = "logo.png"
 
 
 -- START:
 -- send the data table of your comic (or an example above) to the `start()` command
 Panels.start(comicData)
+
+-- import "CoreLibs/ui"
+-- font = playdate.graphics.font.new("fonts/font-Cuberick-Bold")
+-- playdate.graphics.setFont(font)
+-- playdate.graphics.drawText("PILOT DRONE", 20, 20)
+
