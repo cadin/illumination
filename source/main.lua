@@ -12,19 +12,12 @@ Panels.credits = gameCredits
 
 -- COMIC DATA:
 -- add data to the table in this file to create your comic
-import "myComicData.lua"
-comicData = myComicData
-
-
--- EXAMPLES:
--- uncomment this file to have the example data used in the `start()` command
--- look in the `examples` folder for the data files
--- import "examples/comicData.lua"
+import "comicData.lua"
 
 
 -- SETTINGS:
 -- change any settings before calling `start()`
-Panels.Settings.showMenuOnLaunch = true
+Panels.Settings.showMenuOnLaunch = false
 
 
 -- START:

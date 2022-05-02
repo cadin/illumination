@@ -1,39 +1,13 @@
--- all the data for your comic goes into this table
--- you can split it up into multiple files to make it easier to manage 
+import "comicData/s01"
+import "comicData/s02"
+-- import "comicData/s03"
+-- import "comicData/s04"
+-- import "comicData/s05"
 
-comicData = { -- a list of SEQUENCES for this comic
-
-	{ -- Sequence 1
-		title = "Chapter 1",
-		panels = { -- a list of PANELS for Sequence 1
-			{ -- Panel 1
-				layers = {
-					-- list of layers for panel 1
-				}
-			}, 
-			{ -- Panel 2
-				layers = {
-					-- list of layers for panel 2
-				}
-			}
-		}
-	},
-
-	{ -- Sequence 2
-		title = "Chapter 2",
-		panels = { -- a list of PANELS for Sequence 2
-			{ -- Panel 1
-				layers = {
-					-- list of layers for panel 1
-				}
-			}, 
-			{ -- Panel 2
-				layers = {
-					-- list of layers for panel 2
-				}
-			}
-		}
-	}
-
-
+comicData = { 
+	s01,
+	s02
+	-- s03,
+	-- s04,
+	-- s05
 }
