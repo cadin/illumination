@@ -25,6 +25,8 @@ s03 = {
 		}, 
 		{
 			-- spray pot
+			transitionOffset = -0.025, -- trigger transition just before 50%
+			audio = { file = "s03/spray", scrollTrigger = 0.475 },
 			layers = {
 				{ image = "s03/D-1-pot.png", parallax = 0.5 },
 				{ image = "s03/D-2-bottle.png", parallax = 0.4,  },
