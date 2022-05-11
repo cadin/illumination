@@ -9,8 +9,15 @@ local vy = 0
 local numFlowersCollected = 0
 local flowersCollected = {false, false, false}
 local flip = playdate.graphics.kImageUnflipped
+local beeSound
+local pickupSound = playdate.sound.sampleplayer.new("audio/s04/beep")
 
 function render4c(panel, offset)
+	if beeSound == nil then
+		beeSound = playdate.sound.sampleplayer.new("audio/s04/bee")
+		beeSound:play(0)
+	end
+	
 	if playdate.buttonIsPressed(Panels.Input.RIGHT) then
 		vx = vx + 0.2
 		flip = playdate.graphics.kImageUnflipped 
@@ -19,7 +26,7 @@ function render4c(panel, offset)
 		flip = playdate.graphics.kImageFlippedX 
 		vx = vx -= 0.2
 	else
-		vx = vx * 0.7
+		vx = vx * 0.99
 	end
 	
 	if playdate.buttonIsPressed(Panels.Input.DOWN) then
@@ -27,11 +34,28 @@ function render4c(panel, offset)
 	elseif playdate.buttonIsPressed(Panels.Input.UP) then
 		vy = vy -= 0.2
 	else
-		vy = vy * 0.7
+		vy = vy * 0.99
 	end
+	
 	
 	beeX = beeX + vx
 	beeY = beeY + vy
+	
+	if beeX > ScreenWidth - 40 then
+		beeX = ScreenWidth - 40
+		vx = -2
+	elseif beeX < -40 then
+		beeX = -40
+		vx = 2
+	end
+	
+	if beeY > ScreenHeight - 40 then
+		beeY = ScreenHeight - 40
+		vy = -2
+	elseif beeY < -40 then
+		beeY = -40
+		vy = 2
+	end
 
 	
 	-- beeY = playdate.getCrankPosition()
@@ -56,7 +80,7 @@ function render4c(panel, offset)
 					if beeX + 25 > layer.x + 10 and beeX + 25 < layer.x  + 40 and beeY + 25 > layer.y + 10 and beeY + 25 < layer.y + 40 then
 						flowersCollected[flowerIndex] = true
 						numFlowersCollected = numFlowersCollected + 1
-						-- TODO: play a sound
+						pickupSound:play()
 					end
 					
 					layer.img:draw(xPos, layer.y)
@@ -82,6 +106,9 @@ function reset4c()
 	numFlowersCollected = 0
 	flowersCollected = {false, false, false}
 	flip = playdate.graphics.kImageUnflipped
+	
+	beeSound:stop()
+	beeSound = nil
 end
 
 
@@ -95,10 +122,17 @@ s04 = {
 		{
 			-- open bee box
 			advanceControlSequence = {Panels.Input.A},
-			advanceDelay = 1000,
+			advanceDelay = 1500,
+
 			layers = {
 				{ image = "s04/A-1-hand.png", parallax = 0.5 },
-				{ images ={ "s04/A-2-lid.png", "s04/A-2b-lidOpen.png"}, parallax = 0.5, advanceControl=Panels.Input.A },
+				{ image = "s04/A-2-lid.png", parallax = 0.5, 
+					animate = { 
+						x = -66, y = 160, trigger = Panels.Input.A, 
+						duration = 700, ease = playdate.easingFunctions.outQuint,
+						audio = { file = "s04/open" },
+					},
+				},
 				{ images = {"shared/blank.png", "s04/A-3-alerts.png"}, parallax = 0.6, advanceControl=Panels.Input.A },
 			},
 		}, 
@@ -125,7 +159,7 @@ s04 = {
 					animate = {opacity= 1, duration= 0, delay = 800, audio={file="s04/beep.wav"}, scrollTrigger = 0 } 	 
 				},
 				
-				{ text = "PILOT DRONE TO FLOWERS", rect={width=100, height=200}, lineHeightAdjustment = 6, x = 270, y = 30, effect={ type= Panels.Effect.TYPE_ON, duration= 1000, delay = 300}, color= Panels.Color.WHITE }
+				{ text = "PILOT DRONE TO FLOWERS", rect={width=100, height=200}, lineHeightAdjustment = 6, x = 270, y = 30, effect={ type= Panels.Effect.TYPE_ON, duration= 1000, delay = 1000}, color= Panels.Color.WHITE }
 			},
 			
 		},
