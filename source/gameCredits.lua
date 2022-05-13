@@ -3,14 +3,14 @@
 
 gameCredits = {
 
-    -- settings for your credits screen
+    -- settings for credits screen
     alignment = Panels.TextAlignment.CENTER,
 	autoScroll = false,
+    
+    -- I'm using the logo for my header, so I'll hide the standard ("Credits") header
     hideStandardHeader = true,
 
-    -- the actual credits for your comic
-    -- add as many as you like, the page will scroll
-    -- you can add images here too
+    -- the actual credits for the comic
     lines = {
         { image = "logo.png"},
 		{ text = "a Botanist mini-comic"},
