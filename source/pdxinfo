@@ -3,4 +3,5 @@ author=Cadin Batrack
 description=A Botanist mini-comic.
 bundleID=com.cadinbatrack.illumination
 version=1.0
+buildNumber=8
 imagePath=SystemAssets/
