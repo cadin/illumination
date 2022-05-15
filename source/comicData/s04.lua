@@ -191,7 +191,7 @@ s04 = {
 					rect={ width=100, height=200 }, 
 					lineHeightAdjustment = 6, 
 					x = 270, y = 30, 
-					color= Panels.Color.WHITE
+					color= Panels.Color.WHITE,
 					effect={ 
 						type= Panels.Effect.TYPE_ON, 
 						duration= 1000, delay = 1000
